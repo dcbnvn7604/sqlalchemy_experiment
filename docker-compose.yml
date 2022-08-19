@@ -1,0 +1,14 @@
+services:
+  sqlalchemy:
+    build: .
+    depends_on:
+      - postgres
+    volumes:
+      - .:/app
+      - /app/.venv
+  postgres:
+    image: postgres:13.8-bullseye
+    environment:
+      POSTGRES_PASSWORD: sqlalchemy
+      POSTGRES_USER: sqlalchemy
+      POSTGRES_DB: sqlalchemy
